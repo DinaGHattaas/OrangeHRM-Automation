@@ -3,6 +3,7 @@
 This is a robust End-to-End (E2E) test automation framework built for the **OrangeHRM** platform. The project implements modern QA best practices, focusing on dynamic data generation, stability, and modularity.
 
 ## 🛠️ Tech Stack & Tools
+
 - **Automation Framework:** [Cypress](https://www.cypress.io/)
 - **Test Design Pattern:** Behaviour-Driven Development (BDD) with Cucumber (Gherkin)
 - **Language:** TypeScript
@@ -11,6 +12,7 @@ This is a robust End-to-End (E2E) test automation framework built for the **Oran
 ---
 
 ## 🏗️ Project Architecture & Structure
+
 The framework is organized to enforce the **Separation of Concerns (SoC)** principle:
 
 ```text
@@ -32,20 +34,30 @@ The framework is organized to enforce the **Separation of Concerns (SoC)** princ
 ```
 
 ## 🚀How to Run the Project
- 
-1. Make sure you have Node.js installed on your machine.
- 
-2. Installation
+
+### 1. Prerequisites
+
+Make sure you have Node.js installed on your machine.
+
+### 2. Installation
+
 Clone the repository and install the project dependencies:
 
-     npm install
- 
-3. Execution
-  To open the interactive Cypress Test Runner:
+```bash
+npm install
 
+```
+
+## 3. Execution
+
+To open the interactive Cypress Test Runner:
+
+```bash
       npx cypress open
- 
-  To run all tests headlessly in the terminal:
 
+```
+
+To run all tests headlessly in the terminal:
+
+```bash
       npx cypress run
- 
