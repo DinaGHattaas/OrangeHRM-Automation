@@ -33,22 +33,16 @@ The framework is organized to enforce the **Separation of Concerns (SoC)** princ
 
 ## 🚀How to Run the Project
  
-Make sure you have Node.js installed on your machine.
+1. Make sure you have Node.js installed on your machine.
  
 2. Installation
 Clone the repository and install the project dependencies:
- 
-Bash
 npm install
  
 3. Execution
 To open the interactive Cypress Test Runner:
- 
-Bash
-npx cypress open
+   npx cypress open
  
 To run all tests headlessly in the terminal:
- 
-Bash
-npx cypress run
+  npx cypress run
  
