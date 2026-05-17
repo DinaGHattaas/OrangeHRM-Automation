@@ -1,0 +1,21 @@
+{
+  "adminUser": {
+    "username": "Admin",
+    "password": "admin123"
+  },
+  "InvalidadminUser": {
+    "username": "Admin",
+    "password": "admin1234"
+  },
+
+  "NullAdminUser": {
+    "username": "{backspace}",
+    "password": "{backspace}"
+  },
+
+  "EmployeeData": {
+    "FirstName": "Dina",
+    "MiddleName": "Romany",
+    "LastName": "Rowes"
+  }
+}
