@@ -1,7 +1,8 @@
 import { defineConfig } from "cypress";
-const createBundler = require("@bahmutov/cypress-esbuild-preprocessor");
-const { addCucumberPreprocessorPlugin } = require("@badeball/cypress-cucumber-preprocessor");
-const { createEsbuildPlugin } = require("@badeball/cypress-cucumber-preprocessor/esbuild");
+import createBundler from "@bahmutov/cypress-esbuild-preprocessor";
+import { addCucumberPreprocessorPlugin } from "@badeball/cypress-cucumber-preprocessor";
+import createEsbuildPlugin from "@badeball/cypress-cucumber-preprocessor/esbuild";
+import allureWriter from "@shelex/cypress-allure-plugin/writer";
 
 export default defineConfig({
   e2e: {
@@ -16,7 +17,14 @@ export default defineConfig({
         })
       );
 
+      config.env.allure = true;
+
+      allureWriter(on, config);
+
       return config;
     },
+    env: {
+      allure: true
+    }
   },
 });

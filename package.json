@@ -13,6 +13,8 @@
     "@badeball/cypress-cucumber-preprocessor": "^24.0.1",
     "@bahmutov/cypress-esbuild-preprocessor": "^2.2.8",
     "@faker-js/faker": "^10.4.0",
+    "@shelex/cypress-allure-plugin": "^2.41.2",
+    "@types/node": "^25.8.0",
     "cypress": "^15.14.2",
     "typescript": "^6.0.3"
   },
