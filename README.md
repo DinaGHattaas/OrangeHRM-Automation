@@ -61,3 +61,14 @@ To run all tests headlessly in the terminal:
 
 ```bash
       npx cypress run
+
+```
+## 📊 Test Reporting (Allure Report)
+
+This project integrates **Allure Report** to generate interactive and detailed automation test reports.
+
+### Prerequisites
+ Install the Allure plugin for Cypress
+ 
+```bash
+npm install @shelex/cypress-allure-plugin --save-dev
