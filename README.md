@@ -53,14 +53,14 @@ npm install
 To open the interactive Cypress Test Runner:
 
 ```bash
-      npx cypress open
+npx cypress open
 
 ```
 
 To run all tests headlessly in the terminal:
 
 ```bash
-      npx cypress run
+npx cypress run
 
 ```
 ## 📊 Test Reporting (Allure Report)
@@ -69,6 +69,6 @@ This project integrates **Allure Report** to generate interactive and detailed a
 
 ### Prerequisites
  Install the Allure plugin for Cypress
- 
+
 ```bash
 npm install @shelex/cypress-allure-plugin --save-dev
