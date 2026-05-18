@@ -5,6 +5,7 @@ import { generateRandomNumber, getRandomFirstName, getRandomLastName } from "../
 
 let fullName: string;
 let NewfullName: string;
+let EmployeeID : any;
 
 Given("Admin logged in Via API", () => {
   AdminloginAPI();
@@ -34,9 +35,11 @@ Then("User fills all the employee Data", () => {
     const randomFirstName = getRandomFirstName()
     const randomLastName =getRandomLastName();
     fullName = `${randomFirstName} ${Employee.MiddleName}`;
+    EmployeeID =`02${generateRandomNumber()}`;
     cy.get("input[name='firstName']").type(randomFirstName);
     cy.get("input[name='middleName']").type(Employee.MiddleName);
     cy.get("input[name='lastName']").type(randomLastName);
+    cy.get(".oxd-input--active").eq(3).clear().type(EmployeeID)
   });
 });
 
