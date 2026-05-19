@@ -1,4 +1,4 @@
-Feature: PIM Module E2E scenarios 
+Feature: PIM Module E2E scenarios
 
     Background:
         Given user navigate to the OrangeHRM login page
@@ -13,6 +13,14 @@ Feature: PIM Module E2E scenarios
         And User fills all the employee Data
         And User clicks on Save Button
         Then employee should be added successfully
+
+    Scenario: Adding an employee with missing required fields
+        When user clicks on PIM Module
+        And User Naviage to PIM Module
+        And user clicks on Add Button
+        When User leaves FirstName and LastName fields empty
+        And User clicks on Save Button
+        Then user should see Required under the First Name & Last Name Fields
 
     Scenario: Search for Employee
         When user clicks on PIM Module

@@ -1,11 +1,14 @@
 import { Given, When, Then } from "@badeball/cypress-cucumber-preprocessor";
 import { AdminloginAPI } from "../Apis/api";
-import { generateRandomNumber, getRandomFirstName, getRandomLastName } from "../utils/utils";
-
+import {
+  generateRandomNumber,
+  getRandomFirstName,
+  getRandomLastName,
+} from "../utils/utils";
 
 let fullName: string;
 let NewfullName: string;
-let EmployeeID : any;
+let EmployeeID: any;
 
 Given("Admin logged in Via API", () => {
   AdminloginAPI();
@@ -32,17 +35,38 @@ Then("user clicks on Add Button", () => {
 Then("User fills all the employee Data", () => {
   cy.fixture("users").then((data) => {
     const Employee = data.EmployeeData;
-    const randomFirstName = getRandomFirstName()
-    const randomLastName =getRandomLastName();
+    const randomFirstName = getRandomFirstName();
+    const randomLastName = getRandomLastName();
     fullName = `${randomFirstName} ${Employee.MiddleName}`;
-    EmployeeID =`02${generateRandomNumber()}`;
+    EmployeeID = `012${generateRandomNumber()}`;
     cy.get("input[name='firstName']").type(randomFirstName);
     cy.get("input[name='middleName']").type(Employee.MiddleName);
     cy.get("input[name='lastName']").type(randomLastName);
-    cy.get(".oxd-input--active").eq(3).clear().type(EmployeeID)
+    cy.get(".oxd-input--active").eq(3).clear().type(EmployeeID);
   });
 });
 
+// Add employee with missing required Fields
+
+Then("User leaves FirstName and LastName fields empty", () => {
+  cy.fixture("users").then((data) => {
+    const Employee = data.EmployeeData;
+    cy.get("input[name='firstName']").clear();
+    cy.get("input[name='middleName']").type(Employee.MiddleName); // enter only middle name
+    cy.get("input[name='lastName']").clear();
+  });
+});
+// Assertion of required fields names
+Then("user should see Required under the First Name & Last Name Fields", () => {
+  cy.get(".oxd-input-field-error-message")
+    .eq(0)
+    .should("be.visible")
+    .and("have.text", "Required");
+  cy.get(".oxd-input-field-error-message")
+    .eq(1)
+    .should("be.visible")
+    .and("have.text", "Required");
+});
 Then("User clicks on Save Button", () => {
   cy.contains("button", "Save").click();
 });
@@ -76,7 +100,7 @@ Then("User Clicks on Edit Icon", () => {
   cy.get(".oxd-icon.bi-pencil-fill").first().click();
 });
 Then("User edit first name", () => {
-  const newName = "UpdatedName_" +generateRandomNumber();
+  const newName = "UpdatedName_" + generateRandomNumber();
   cy.get('input[name="firstName"]').clear().type(newName);
   NewfullName = newName;
 });
@@ -114,7 +138,7 @@ Then("User Clicks on Confirm Delete", () => {
 // Delete Assertion
 Then("Verify Employee Deleted successfully", () => {
   // cy.get('.oxd-toast',{timeout:10000}).should('be.visible');
-  cy.get(".oxd-text.oxd-text--span")
+  cy.get(".oxd-text.oxd-text--span", { timeout: 10000 })
     .should("be.visible")
     .and("contain", "No Records Found");
 });

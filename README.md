@@ -72,3 +72,8 @@ This project integrates **Allure Report** to generate interactive and detailed a
 
 ```bash
 npm install @shelex/cypress-allure-plugin --save-dev
+
+```
+# Generate and open the live report automatically
+```bash 
+npx allure serve allure-results
