@@ -6,11 +6,11 @@ Feature: PIM Module E2E scenarios
         Then user should be redirected to the "Dashboard" page
 
 
-    Scenario: Add Employee
+    Scenario: Add Employee 
         When user clicks on PIM Module
         And User Naviage to PIM Module
         And user clicks on Add Button
-        And User fills all the employee Data
+        And User fills all the employee Data 
         And User clicks on Save Button
         Then employee should be added successfully
 
@@ -25,11 +25,7 @@ Feature: PIM Module E2E scenarios
     Scenario: Search for Employee
         When user clicks on PIM Module
         And User Naviage to PIM Module
-        And user clicks on Add Button
-        And User fills all the employee Data
-        And User clicks on Save Button
-        Then employee should be added successfully
-        When User clciks on Employee list
+        And User add Employee via API
         And user searches for the created employee
         Then Verify Search Result
 
@@ -37,11 +33,7 @@ Feature: PIM Module E2E scenarios
     Scenario: Edit Employee Info
         When user clicks on PIM Module
         And User Naviage to PIM Module
-        And user clicks on Add Button
-        And User fills all the employee Data
-        And User clicks on Save Button
-        Then employee should be added successfully
-        When User clciks on Employee list
+        And User add Employee via API
         And  user searches for the created employee
         And  Verify Search Result
         And User Clicks on Edit Icon
@@ -53,11 +45,7 @@ Feature: PIM Module E2E scenarios
     Scenario: Delete Employee
         When user clicks on PIM Module
         And User Naviage to PIM Module
-        And user clicks on Add Button
-        And User fills all the employee Data
-        And User clicks on Save Button
-        Then employee should be added successfully
-        When User clciks on Employee list
+        And User add Employee via API
         And  user searches for the created employee
         And  Verify Search Result
         And  user clicks on Delete Icon

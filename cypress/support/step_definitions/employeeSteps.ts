@@ -1,5 +1,5 @@
 import { Given, When, Then } from "@badeball/cypress-cucumber-preprocessor";
-import { AdminloginAPI } from "../Apis/api";
+import { AddEmployeeAPI, AdminloginAPI } from "../Apis/api";
 import {
   generateRandomNumber,
   getRandomFirstName,
@@ -9,6 +9,7 @@ import {
 let fullName: string;
 let NewfullName: string;
 let EmployeeID: any;
+let ReturnedFullName: any;
 
 Given("Admin logged in Via API", () => {
   AdminloginAPI();
@@ -78,6 +79,17 @@ Then("employee should be added successfully", () => {
     .should("have.text", "Personal Details");
 });
 
+// add employee via api
+Then("User add Employee via API", () => {
+  cy.fixture("users").then((data) => {
+    const Employee = data.EmployeeData;
+    AddEmployeeAPI().then((employee) => {
+      ReturnedFullName = `${employee.ReturnedFN} ${Employee.MiddleName}`;
+      cy.log(`Created Employee Name is:`, ReturnedFullName);
+      cy.log(`Created Employee ID is: ${employee.ReturnedEmID}`);
+    });
+  });
+});
 // search for Employee
 Then("User clciks on Employee list", () => {
   cy.visit(
@@ -86,12 +98,17 @@ Then("User clciks on Employee list", () => {
 });
 
 Then("user searches for the created employee", () => {
-  cy.get('input[placeholder="Type for hints..."]').first().type(fullName);
+  cy.get('input[placeholder="Type for hints..."]')
+    .first()
+    .type(ReturnedFullName);
   cy.contains("button", " Search ").click();
 });
 // Search Assertion
 Then("Verify Search Result", () => {
-  cy.get(".oxd-table-card", { timeout: 10000 }).should("contain", fullName);
+  cy.get(".oxd-table-card", { timeout: 10000 }).should(
+    "contain",
+    ReturnedFullName,
+  );
   cy.log(`Assertion Passed: Found ${fullName} in the search results!`);
 });
 
